@@ -17,7 +17,7 @@ module.exports = merge(baseConfig, {
     hot: true, // 开启热更新
     historyApiFallback: true, // 解决history路由404问题
     static: {
-      directory: path.join(__dirname, '../public'), //托管静态资源public文件夹
+      directory: path.join(__dirname, '../public'), // 托管静态资源public文件夹, 在开发环境使用[绝对路径]可以访问到public下的文件
     },
   },
 });
