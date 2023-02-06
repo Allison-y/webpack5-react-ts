@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server -c build/webpack.dev.js",
-    "build": "webpack -c build/webpack.prod.js"
+    "build": "webpack -c build/webpack.prod.js",
+    "serve": "serve -s dist"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "serve": "^14.2.0"
   }
 }
