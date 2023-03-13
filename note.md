@@ -40,3 +40,9 @@
 #### 在不刷新浏览器的前提下热更新(比如修改 App.tsx, 不需要刷新浏览器就可以自动更新)
 
 `@pmmmwh/react-refresh-webpack-plugin 依赖于react-refresh`
+
+#### 优化构建速度
+
+`speed-measure-webpack-plugin 构建耗时分析`
+`新增webpack构建分析配置文件 build/webpack.analy.js`
+`修改package.json添加启动webpack打包分析脚本命令`
