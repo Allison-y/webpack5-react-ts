@@ -14,7 +14,7 @@
 #### loaders
 
 `style-loader: 把解析后的css代码从js中抽离,放到头部的style标签中(在运行时做的)`
-`css-loader: 解析css文件代码`
+`css-loader: 解析css文件代码(因为webpack默认只认识js,是不识别css文件的,需要使用loader来解析css)`
 `less-loader: 解析less文件代码,把less编译为css`
 `less: less核心`
 `postcss-loader：处理css时自动加前缀`

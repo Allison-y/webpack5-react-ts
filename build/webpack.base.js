@@ -13,6 +13,10 @@ module.exports = {
     clean: true, // webpack4需要配置clean-webpack-plugin来删除dist文件,webpack5内置了
     publicPath: '/', // 打包后文件的公共路径前缀
   },
+  // test 属性，识别出哪些文件会被转换
+  // use 属性，定义出在进行转换时，应该使用哪个 loader。
+  // 当webpack编译器碰到 在 require()/import 语句中被解析为 test指示的路径 时,  在对它打包时, 先使用use中定义的loader处理一下
+  // loader 从右到左（或从下到上）地取值(evaluate)/执行(execute)。
   module: {
     rules: [
       {
@@ -86,12 +90,20 @@ module.exports = {
       },
     ],
   },
+  // 设置模块如何被解析
   resolve: {
+    // 别名
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
     // extensions是webpack的resolve解析配置下的选项，
     // 在引入模块时不带文件后缀时，会来该配置数组里面依次添加后缀查找文件，
     // 因为ts不支持引入以 .ts, tsx为后缀的文件，所以要在extensions中配置，而第三方库里面很多引入js文件没有带后缀，所以也要配置下js
     extensions: ['.js', '.tsx', '.ts'], // ['js', 'tsx', 'ts'] 这样写会报错 识别不到第三方js文件
   },
+  // loader 用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。包括：打包优化，资源管理，注入环境变量。
+  // 想要使用一个插件，你只需要 require() 它，然后把它添加到 plugins 数组中。多数插件可以通过选项(option)自定义。
+  // 你也可以在一个配置文件中因为不同目的而多次使用同一个插件，这时需要通过使用 new 操作符来创建一个插件实例。
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'), // 模板取定义root节点的模板
@@ -113,6 +125,8 @@ module.exports = {
   ],
 };
 
-// ...
+// process.env.NODE_ENV环境变量webpack会自动根据设置的mode字段来给业务代码注入对应的development和prodction (可在业务代码中直接访问process.env.NODE_ENV)
+// 在package.json中再次设置环境变量NODE_ENV是为了在webpack和babel的配置文件中访问到
+// 在package.json中配置BASE_ENV=development后可在webpack配置文件中访问到, 再加上在webpack配置文件中配置new webpack.DefinePlugin()则可在业务代码中访问到
 console.log('NODE_ENV', process.env.NODE_ENV);
 console.log('BASE_ENV', process.env.BASE_ENV);

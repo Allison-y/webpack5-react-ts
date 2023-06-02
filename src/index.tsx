@@ -12,5 +12,5 @@ console.log('NODE_ENV', process.env.NODE_ENV);
 // new webpack.DefinePlugin({
 //   'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV),
 // }),
-console.log('BASE_ENV', process.env.BASE_ENV);
+// console.log('BASE_ENV', process.env.BASE_ENV);
 // console.log('BASE_ENV_IS_TEST', BASE_ENV_IS_TEST);

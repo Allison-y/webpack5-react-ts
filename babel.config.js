@@ -20,7 +20,7 @@ module.exports = {
     '@babel/preset-typescript',
   ],
   plugins: [
-    ['@babel/plugin-proposal-decorators', { legacy: true }], // 支持装饰器
+    ['@babel/plugin-proposal-decorators', { legacy: true }], // 支持装饰器 目前js标准语法是不支持的,不配置的话运行或者打包会报错,
     isDEV && require.resolve('react-refresh/babel'), // 如果是开发模式,就启动react热更新插件
   ].filter(Boolean),
 };
